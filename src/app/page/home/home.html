@@ -1,5 +1,5 @@
-<div class="flex justify-center flex-col gap-6 items-center w-full h-screen">
-  <form class="max-w-md rounded-lg bg-gray-100 p-6 shadow-sm w-md h-min mt-6" #form="ngForm">
+<div class="flex mb-3 justify-center flex-col gap-6 items-center w-full">
+  <form class="rounded-lg max-w-[90vw] w-md bg-gray-100 p-6 shadow-sm h-min mt-6" #form="ngForm">
     <fieldset class="mb-4 flex flex-col gap-1">
       <label for="prefix" class="text-sm font-medium text-gray-700"> Prefixo </label>
       <input
@@ -36,14 +36,15 @@
     <button
       (click)="printForm()"
       type="submit"
-      class="mt-4 cursor-pointer px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded hover:bg-blue-700 transition-colors shadow"
+      [disabled]="!form.valid"
+      class="mt-4 cursor-pointer disabled:bg-gray-500 px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded hover:bg-blue-700 transition-colors shadow"
     >
       Print form
     </button>
   </form>
 
   <div
-    class="flex mx-8 gap-3 rounded-md border border-slate-200 border-l-4 border-l-blue-600 bg-slate-50 p-4 text-slate-700"
+    class="flex max-w-[90vw] gap-3 rounded-md border border-slate-200 border-l-4 border-l-blue-600 bg-slate-50 p-4 text-slate-700"
   >
     <!-- Conteúdo -->
     <div class="space-y-3 text-sm">
