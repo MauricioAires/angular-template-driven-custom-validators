@@ -1,5 +1,8 @@
 <div class="flex mb-3 justify-center flex-col gap-6 items-center w-full">
-  <form class="rounded-lg max-w-[90vw] w-md bg-gray-100 p-6 shadow-sm h-min mt-6" #form="ngForm">
+  <form
+    class="rounded-lg max-w-[90vw] relative overflow-hidden w-md bg-gray-100 p-6 shadow-sm h-min mt-6"
+    #form="ngForm"
+  >
     <fieldset class="mb-4 flex flex-col gap-1">
       <label for="prefix" class="text-sm font-medium text-gray-700"> Prefixo </label>
       <input
@@ -9,7 +12,7 @@
         type="text"
         autocomplete="off"
         placeholder="Ex: Sr., Dra."
-        class="rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+        class="rounded-md border max-w-full border-gray-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
       />
     </fieldset>
 
@@ -28,9 +31,11 @@
       />
     </fieldset>
 
-    <p class="p-1 bg-red-200 mt-4 rounded-sm text-red-800">Form is-valid {{ form.valid }}</p>
+    <p class="p-1 bg-red-200 mt-4 rounded-sm text-red-800">Form is-valid: {{ form.valid }}</p>
     <p class="p-1 bg-red-200 mt-4 rounded-sm text-red-800">
-      Form erros {{ form.controls['name'].errors | json }}
+      Input name erros: @if(form.controls['name']){
+      {{ form.controls['name'].errors | json }}
+      }
     </p>
 
     <button
