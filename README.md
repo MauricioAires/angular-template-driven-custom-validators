@@ -1,59 +1,67 @@
-# AngularTemplateDrivenCustomValidators
+# **Custom Validators em Angular com Template-Driven Forms**
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.5.
+Este projeto tem como objetivo demonstrar e compartilhar a implementação de **validadores customizados reativos** para formulários Template-Driven do Angular. O validador oferece uma solução simples e eficiente para validações dinâmicas, adaptando-se automaticamente a mudanças de estado externo, garantindo consistência na validação de formulários.
 
-## Development server
+![Preview](.github/image.png 'Custom Validators Angular Template-Driven')
 
-To start a local development server, run:
+## **Recursos**
 
-```bash
-ng serve
+- **Validação Reativa**: O validador revalida automaticamente quando o prefixo é alterado, sem necessidade de interação do usuário.
+- **Template-Driven Forms**: Compatível com `NgForm` e `ngModel`, facilitando a integração em formulários existentes.
+- **Standalone Directive**: Implementado como diretiva standalone usando a abordagem moderna do Angular.
+- **Dinâmico e Configurável**: O prefixo pode ser alterado em tempo de execução, permitindo validações condicionais.
+- **Type-Safe**: Implementado com TypeScript strict, garantindo segurança de tipos.
+
+## **Instalação**
+
+1. Clone o repositório:
+
+   ```bash
+   git clone https://github.com/seu-usuario/angular-template-driven-custom-validators.git
+   ```
+
+2. Navegue até o diretório do projeto:
+
+   ```bash
+   cd angular-template-driven-custom-validators
+   ```
+
+3. Instale as dependências:
+
+   ```bash
+   npm install
+   ```
+
+4. Execute o aplicativo localmente:
+
+   ```bash
+   npm start
+   ```
+
+   O aplicativo estará disponível em [http://localhost:4200](http://localhost:4200).
+
+## **Como Usar**
+
+Importe o `StartsWithValidator` no seu componente e aplique a diretiva `[starts-with]` no campo de input:
+
+```typescript
+import { StartsWithValidator } from './shared/validators/starts-with.validator';
+
+@Component({
+  imports: [FormsModule, StartsWithValidator],
+  // ...
+})
+export class ExampleComponent {
+  protected prefix = 'Sr.';
+}
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```html
+<form #form="ngForm">
+  <input name="name" ngModel [starts-with]="prefix" placeholder="Seu nome completo" />
+</form>
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## **Contribuições**
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Contribuições são bem-vindas! Se você tiver melhorias, correções ou sugestões, sinta-se à vontade para abrir um **pull request**.
